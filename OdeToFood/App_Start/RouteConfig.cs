@@ -14,10 +14,27 @@ namespace OdeToFood
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
+				name: "Cuisine",
+				url: "cuisine/{name}",
+				defaults: new { controller = "Cuisine", action = "Search", name="" }
+			);
+			routes.MapRoute(
+				name: "Obama",
+				url: "obama/{name}",
+				defaults: new { controller = "Obama", action = "Search", name = "" }
+			);
+			routes.MapRoute(
+				name: "Thanos",
+				url: "thanos/{name}",
+				defaults: new { controller = "Thanos", action = "Search", name = "" }
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 		}
+
 	}
 }
