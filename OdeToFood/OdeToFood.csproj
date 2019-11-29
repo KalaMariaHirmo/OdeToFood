@@ -134,6 +134,8 @@
     <Compile Include="Controllers\CuisineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ObamaController.cs" />
+    <Compile Include="Models\RestaurantReview.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ThanosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +152,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\noteeth.gif" />
+    <Content Include="Images\teeth.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -177,11 +181,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cuisine\" />
     <Folder Include="Views\Obama\" />
+    <Folder Include="Views\Reviews\" />
     <Folder Include="Views\Thanos\" />
   </ItemGroup>
   <ItemGroup>
