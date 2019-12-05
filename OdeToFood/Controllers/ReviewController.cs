@@ -8,6 +8,11 @@ namespace OdeToFood.Controllers
 {
     public class ReviewController : Controller
     {
+
+		public ActionResult BestReview()
+		{
+			var best = from r in 
+		}
         // GET: Review
         public ActionResult Index()
         {
