@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<link href="~/Content/Site.css" rel="stylesheet" />
+
+@*<link href="~/Content/Site.css" rel="stylesheet" />
 <img class="logo" src="~/Images/noteeth.gif" alt="logo" />
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -36,4 +37,14 @@
             <p><a class="btn btn-default" href="/Cuisine/Search/Yoda">Cuisine &raquo;</a></p>
         </div>
     </div>
-</div>
+</div>*@
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>@item.Name</h4>
+        <div>@item.City, @item.Country</div>
+        <div>Reviews count: @item.CountOfReviews</div>
+        <hr />
+    </div>
+}

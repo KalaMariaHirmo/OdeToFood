@@ -10,10 +10,25 @@ namespace OdeToFood.Controllers
 	{
 		public ActionResult Index()
 		{
+			/*
+			var model =
+				from r in _db.Restaurants
+				orderby r.Reviews.Average(ReviewController => review.Rating)
+				select new RestaurantListViewModel
+				{
+					Id = r.Id,
+					Name = r.Name,
+					City = r.City,
+					Country = r.Country,
+					CountOfReviews = r.Reviews.Count()
+				};
+			*/
+			
 			var controller = RouteData.Values["controlle"];
 			var action = RouteData.Values["action"];
 			var id = RouteData.Values["id"];
 			ViewBag.message = $"{controller} :: {action} - {id}";
+			
 			return View();
 		}
 

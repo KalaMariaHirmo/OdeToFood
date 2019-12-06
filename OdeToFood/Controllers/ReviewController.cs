@@ -8,11 +8,12 @@ namespace OdeToFood.Controllers
 {
     public class ReviewController : Controller
     {
-
+		/*
 		public ActionResult BestReview()
-		{
+		{					
 			var best = from r in 
 		}
+		*/
         // GET: Review
         public ActionResult Index()
         {
@@ -102,6 +103,22 @@ namespace OdeToFood.Controllers
 				City = "London",
 				Country = "UK",
 				Rating = 10,
+			},
+			new RestaurantReview
+			{
+				Id = 1,
+				Name = "Obamos",
+				City = "Mmmmmmmm",
+				Country = "USA",
+				Rating = 6,
+			},
+			new RestaurantReview
+			{
+				Id = 1,
+				Name = "YES",
+				City = "Maybe",
+				Country = "Definetly",
+				Rating = 9,
 			}
 		};
 
