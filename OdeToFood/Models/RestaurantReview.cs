@@ -1,4 +1,4 @@
-﻿namespace OdeToFood.Controllers
+﻿namespace OdeToFood.Models
 {
 	public class RestaurantReview
 	{
@@ -7,5 +7,6 @@
 		public string City { get; set; }
 		public string Country { get; set; }
 		public int Rating { get; set; }
+		public int RestaurantID { get; set; }
 	}
 }
