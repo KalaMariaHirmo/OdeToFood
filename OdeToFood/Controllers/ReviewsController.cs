@@ -16,7 +16,7 @@ namespace OdeToFood.Controllers
 		}
 		*/
 		// GET: Review
-		public ActionResult Index()
+		public ActionResult LatestReviews()
 		{
 			var model = from r in _review
 						orderby r.Country
