@@ -122,6 +122,6 @@ namespace OdeToFood.Controllers
 				Rating = 9,
 			}
 		};
-		public ActionResult Index([Bind(Prefix = "id")]
+		//public ActionResult Index([Bind(Prefix = "id")]
     }
 }
