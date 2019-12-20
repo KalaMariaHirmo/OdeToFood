@@ -25,8 +25,8 @@ namespace OdeToFood
 			);
 			routes.MapRoute(
 				name: "Thanos",
-				url: "thanos/{name}",
-				defaults: new { controller = "Thanos", action = "Search", name = "" }
+				url: "thanos/{name}/{id}",
+				defaults: new { controller = "Thanos", action = "Search", name = "", id="" }
 			);
 
 			routes.MapRoute(

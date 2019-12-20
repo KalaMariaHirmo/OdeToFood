@@ -9,9 +9,9 @@ namespace OdeToFood.Controllers
     public class ThanosController : Controller
     {
 		// GET: Thanos
-		public ActionResult Search(string name)
+		public ActionResult Search(string name , string id)
 		{
-			return Content("Thanos did " + name);
+			return Content("Thanos did " + name + ". He be looking kinda " + id);
 		}
 	}
 }

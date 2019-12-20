@@ -1,21 +1,24 @@
-﻿using System;
+﻿using OdeToFood.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using OdeToFood.Models;
 
 namespace OdeToFood.Controllers
 {
 	public class ReviewsController : Controller
 	{
-		/*
+		OdeToFoodDb _db = new OdeToFoodDb();
+		[ChildActionOnly]
 		public ActionResult BestReview()
-		{					
-			var best = from r in 
+		{
+			var best = from r in _review
+					   orderby r.Rating descending
+					   select r;
+			return PartialView("_Review", best.First());
 		}
-		*/
-		// GET: Review
 		public ActionResult LatestReviews()
 		{
 			var model = from r in _review
@@ -23,77 +26,66 @@ namespace OdeToFood.Controllers
 						select r;
 			return View(model);
 		}
-
-		// GET: Review/Details/5
-		public ActionResult Details(int id)
+		// GET: Reviews
+		public ActionResult Index([Bind(Prefix = "id")] int restaurantId)
 		{
-			return View();
+			var restaurant = _db.Restaurants.Find(restaurantId);
+			if (restaurant != null)
+			{
+				return View(restaurant);
+			}
+			return HttpNotFound();
+		}
+		protected override void Dispose(bool disposing)
+		{
+			if (_db != null)
+			{
+				_db.Dispose();
+			}
+			base.Dispose(disposing);
 		}
 
-		// GET: Review/Create
-		public ActionResult Create()
+		[HttpGet]
+		public ActionResult Create(int restaurantId)
 		{
+			var model = _db.Restaurants.Find(restaurantId);
+			ViewBag.Name = model.Name;
+			ViewBag.restaurantId = model.Id;
 			return View();
 		}
-
-		// POST: Review/Create
 		[HttpPost]
-		public ActionResult Create(FormCollection collection)
+		public ActionResult Create(RestaurantReview review)
 		{
-			try
+			if (ModelState.IsValid)
 			{
-				// TODO: Add insert logic here
-
-				return RedirectToAction("Index");
+				_db.Reviews.Add(review);
+				_db.SaveChanges();
+				return RedirectToAction("Index", new { id = review.RestaurantId });
 			}
-			catch
-			{
-				return View();
-			}
+			return View();
 		}
+		// GET: Reviews/Details/5
 
-		// GET: Review/Edit/5
+		[HttpGet]
 		public ActionResult Edit(int id)
 		{
-			return View();
+			var model = _db.Reviews.Find(id);
+			return View(model);
 		}
 
-		// POST: Review/Edit/5
 		[HttpPost]
-		public ActionResult Edit(int id, FormCollection collection)
+		public ActionResult Edit([Bind(Exclude = "ReviewerName")]EditReviewViewModel review)
 		{
-			try
+			if (ModelState.IsValid)
 			{
-				// TODO: Add update logic here
-
-				return RedirectToAction("Index");
+				var editable_review = _db.Reviews.Find(review.Id);
+				editable_review.Body = review.Body;
+				editable_review.Rating = review.Rating;
+				_db.Entry(editable_review).State = EntityState.Modified;
+				_db.SaveChanges();
+				return RedirectToAction("Index", new { id = editable_review.RestaurantId });
 			}
-			catch
-			{
-				return View();
-			}
-		}
-
-		// GET: Review/Delete/5
-		public ActionResult Delete(int id)
-		{
-			return View();
-		}
-
-		// POST: Review/Delete/5
-		[HttpPost]
-		public ActionResult Delete(int id, FormCollection collection)
-		{
-			try
-			{
-				// TODO: Add delete logic here
-
-				return RedirectToAction("Index");
-			}
-			catch
-			{
-				return View();
-			}
+			return View(review);
 		}
 		static List<RestaurantReview> _review = new List<RestaurantReview>
 		{

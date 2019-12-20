@@ -32,7 +32,7 @@ namespace OdeToFood.Controllers
 			//ViewBag.message = $"{controller} :: {action} - {id}";
 
 			var model =
-				_db.Restaurants.ToList()
+				_db.Restaurants
 				.OrderByDescending(r => r.Reviews.Average(review => review.Rating))
 				.Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
 				.Take(10)

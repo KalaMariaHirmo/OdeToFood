@@ -1,7 +1,8 @@
 ﻿body {
-    background-color:antiquewhite;
+    background-color: deeppink;
     padding-top: 50px;
     padding-bottom: 20px;
+    color:black;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -49,11 +50,18 @@ a.barlogo{
 }
 
 .review h4{
-    color: maroon;
+    color: deeppink;
     padding: 5px;
     background: #cccc99
 }
 .review p{
 
     font-size: .8em;
+}
+hr{
+    border-top: 1px solid darkmagenta;
+}
+.right{
+    float: right;
+    margin-top: -20px;
 }
